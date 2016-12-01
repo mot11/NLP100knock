@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 def ngram_make(n, li):
-    # type: (int, list) -> list
 
     output_list = []
 
@@ -79,25 +78,25 @@ word_2 = 'paragraph'
 X = ngram_make(2, word_1)
 Y = ngram_make(2, word_2)
 
-print X
-print Y
+print(X)
+print(Y)
 
-print 'Union is ', set_union(X, Y), ''
-print 'Intersection is ', set_intersection(X, Y), ''
-print 'Complement of set X with respect to Y is', set_complement(X, Y), ''
-print 'Complement of set Y with respect to X is', set_complement(Y, X), ''
+print('Union is ', set_union(X, Y), '')
+print('Intersection is ', set_intersection(X, Y), '')
+print('Complement of set X with respect to Y is', set_complement(X, Y), '')
+print('Complement of set Y with respect to X is', set_complement(Y, X), '')
 
 for i in range(len(X)):
     if X[i] == 'se':
-        print '\'se\' was contained in X.'
+        print('\'se\' was contained in X.')
         break
     if i+1 == len(X):
-        print '\'se\' was not contained in X.'
+        print('\'se\' was not contained in X.')
 
 for i in range(len(Y)):
     if Y[i] == 'se':
-        print '\'se\' was contained in Y.'
+        print('\'se\' was contained in Y.')
         break
 
     if i+1 == len(Y):
-        print '\'se\' was not contained in Y.'
+        print('\'se\' was not contained in Y.')

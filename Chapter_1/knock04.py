@@ -36,5 +36,5 @@ for i in range(len(word_list)):
 
     dictionary[index] = str(i)
 
-print dictionary
+print(dictionary)
 

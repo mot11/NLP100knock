@@ -29,12 +29,12 @@ for i in range(length):
     else:
         word += line1[i]
 
-print 'Words:'
-print ''
+print('Words:')
+print('')
 
 for i in range(len(word_list)):
     word = word_list[i]
-    print word
+    print(word)
 
     for j in range(len(word)):
         new_letter = True
@@ -54,4 +54,4 @@ for i in range(len(word_list)):
 
     del letter_list_1[:]
     del letter_list_2[:]
-    print''
+    print('')

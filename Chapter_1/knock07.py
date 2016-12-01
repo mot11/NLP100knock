@@ -7,4 +7,4 @@ def time(x, y, z):
 
 
 t_output = time(12, '気温', 22.4)
-print t_output
+print(t_output)

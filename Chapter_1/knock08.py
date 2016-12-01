@@ -28,12 +28,11 @@ def decipher(line):
 
     return output_line
 
-input_line = raw_input('Please input a message.\n')
-input_line_u = input_line.decode('utf-8')
+input_line_u = input('Please input a message.\n')
 
 c = cipher(input_line_u)
 d = decipher(c)
 
-print 'Encrypted message is', c
-print 'Decrypted message is', d
+print('Encrypted message is', c)
+print('Decrypted message is', d)
 

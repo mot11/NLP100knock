@@ -36,8 +36,7 @@ def split_letters(line):
     return split_done
 
 
-input_size = raw_input('Input size of n-gram.\n')
-size_of_ngram = int(input_size.decode('utf-8'))
+size_of_ngram = int(input('Input size of n-gram.\n'))
 
 line1 = 'I am an NLPer'
 
@@ -47,6 +46,5 @@ line_sl = split_letters(line1)
 output_sw = ngram_make(size_of_ngram, line_sw)
 output_sl = ngram_make(size_of_ngram, line_sl)
 
-print 'N-gram of words is: ', output_sw
-print 'N-gram of letters is: ', output_sl
-print ''
+print('N-gram of words is: ', output_sw)
+print('N-gram of letters is: ', output_sl)
