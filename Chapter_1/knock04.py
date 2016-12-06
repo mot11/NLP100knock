@@ -6,24 +6,11 @@ line1 = ('Hi He Lied Because Boron Could Not Oxidize Fluorine. '
          'New Nations Might Also Sign Peace Security Clause. Arthur King Can.')
 
 word = ''
-word_list = []
 dictionary = {}
 
-for i in range(len(line1)):
+pa = re.compile('\w+(?=\W)')
 
-    m = re.search('[ .,]', line1[i]) or i + 1 == len(line1)
-
-    if m:
-
-        if i + 1 == len(line1):
-            word += line1[i]
-        if word != '':
-            word_list.append(word)
-            word = ''
-
-    else:
-
-        word += line1[i]
+word_list = [m.group() for m in pa.finditer(line1)]
 
 for i in range(len(word_list)):
 
@@ -37,4 +24,3 @@ for i in range(len(word_list)):
     dictionary[index] = str(i)
 
 print(dictionary)
-
