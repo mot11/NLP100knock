@@ -4,7 +4,6 @@ import re
 
 
 def find_kisojouhou(str_1):
-
     p_1 = re.compile(r'.{2}(?=(基礎情報))')
     p_2 = re.compile(r'\{')
     p_3 = re.compile(r'\}')
@@ -20,7 +19,7 @@ def find_kisojouhou(str_1):
         if brackets == 0:
             break
 
-    output = str_1[m_1.start():i+1]
+    output = str_1[m_1.start():i + 1]
 
     return output
 
@@ -31,11 +30,15 @@ def hoge(str_1):
 
 
 def convert_dictionary(str_1):
-    p = re.compile(r'(?<=\|)([^ =]+) = (((?!(\\n\||\\n\}\}$)).)*)?')
+    p_1 = re.compile(r'(?<=\|)([^ =]+) = (((?!(\\n\||\\n\}\}$)).)*)?')
+    p_2 = re.compile(r'(\'+)([^\']+)\1')
 
-    output = {m.group(1): m.group(2) for m in p.finditer(str_1)}
 
-    return output
+    output_1 = {m.group(1): m.group(2) for m in p_1.finditer(str_1)}
+
+    output_2 = {key: p_2.sub(r'\2', value) for key, value in output_1.items()}
+
+    return output_2
 
 
 def main():
@@ -47,7 +50,8 @@ def main():
 
     print(output)
 
-    print(output['略名'])
+    print('確立形態4', '\n\t', output['確立形態4'])
+
 
 if __name__ == '__main__':
     main()

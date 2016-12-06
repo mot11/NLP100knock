@@ -5,7 +5,7 @@ import re
 
 def find_files(str_1):
 
-    p = re.compile('(?<=(File:))[^|]+(?=|)')
+    p = re.compile(r'(?<=(File:))[^|]+(?=|)')
 
     output = [m.group() for m in p.finditer(str_1)]
 

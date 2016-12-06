@@ -4,7 +4,6 @@ import re
 
 
 def find_kisojouhou(str_1):
-
     p_1 = re.compile(r'.{2}(?=(基礎情報))')
     p_2 = re.compile(r'\{')
     p_3 = re.compile(r'\}')
@@ -20,7 +19,7 @@ def find_kisojouhou(str_1):
         if brackets == 0:
             break
 
-    output = str_1[m_1.start():i+1]
+    output = str_1[m_1.start():i + 1]
 
     return output
 
@@ -31,11 +30,20 @@ def hoge(str_1):
 
 
 def convert_dictionary(str_1):
-    p = re.compile(r'(?<=\|)([^ =]+) = (((?!(\\n\||\\n\}\}$)).)*)?')
+    p_1 = re.compile(r'(?<=\|)([^ =]+) = (((?!(\\n\||\\n\}\}$)).)*)?')
+    p_2 = re.compile(r'(\'+)([^\']+)\1')
+    p_3 = re.compile(r'(\[+)([^\[\]]+)(\]+)')
 
-    output = {m.group(1): m.group(2) for m in p.finditer(str_1)}
+    # matches to field name and value, and inputs to dictionary
+    output_1 = {m.group(1): m.group(2) for m in p_1.finditer(str_1)}
 
-    return output
+    # matches to emphasis
+    output_2 = {key: p_2.sub(r'\2', value) for key, value in output_1.items()}
+
+    # matches to links
+    output_3 = {key: p_3.sub(r'\2', value) for key, value in output_2.items()}
+
+    return output_3
 
 
 def main():
@@ -45,9 +53,11 @@ def main():
     kisojouhou = find_kisojouhou(content[0])
     output = convert_dictionary(kisojouhou)
 
-    print(output)
+    for key, value in output.items():
+        print(key, '\n\t', value)
 
-    print(output['略名'])
+    print('確立形態1', '\n\t', output['確立形態1'])
+
 
 if __name__ == '__main__':
     main()
