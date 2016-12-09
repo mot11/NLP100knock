@@ -28,18 +28,18 @@ def make_morphemes_list(mecab_input):
     return all_morphemes
 
 
-def make_verb_list(morphemes_list):
+def make_verb_base_list(morphemes_list):
 
-    # すべての動詞の表層形を抽出したリストを作る。
+    # すべての動詞の原形（基本形）を抽出したリストを作る。
 
-    verb_surface_list = []
+    verb_base_list = []
 
     for x in morphemes_list:
         for y in x:
             if y['品詞'] == '動詞':
-                verb_surface_list.append(y['表層形'])
+                verb_base_list.append(y['基本形'])
 
-    return verb_surface_list
+    return verb_base_list
 
 
 def main():
@@ -51,7 +51,7 @@ def main():
     neko_morphemes = make_morphemes_list(content)
 
     # 動詞の表層形を抽出したリストの作成
-    verb_list = make_verb_list(neko_morphemes)
+    verb_list = make_verb_base_list(neko_morphemes)
 
     # リストの出力
     # print(verb_list[])
