@@ -28,18 +28,18 @@ def make_morphemes_list(mecab_input):
     return all_morphemes
 
 
-def make_verb_base_list(morphemes_list):
+def make_noun_list(morphemes_list):
 
-    # すべての動詞の原形（基本形）を抽出したリストを作る。
+    # すべてのサ変接続の名詞の表層形を抽出したリストを作る。
 
-    verb_base_list = []
+    noun_list = []
 
     for x in morphemes_list:
         for y in x:
-            if y['品詞'] == '動詞':
-                verb_base_list.append(y['基本形'])
+            if y['品詞'] == '名詞' and y['品詞細分類1'] == 'サ変接続':
+                noun_list.append(y['表層形'])
 
-    return verb_base_list
+    return noun_list
 
 
 def main():
@@ -50,11 +50,11 @@ def main():
     # 形態素解析結果の読み込み
     neko_morphemes = make_morphemes_list(content)
 
-    # 動詞の原形を抽出したリストの作成
-    verb_list = make_verb_base_list(neko_morphemes)
+    # サ変接続の名詞の表層形を抽出したリストの作成
+    noun_list = make_noun_list(neko_morphemes)
 
     # リストの出力
-    # print(verb_list[:40])
+    print(noun_list[:40])
 
 
 if __name__ == '__main__':
